@@ -36,15 +36,8 @@ def dataload(folder):
 if __name__ == '__main__':
     folder="C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\Images"
     train1,labels1=dataload(folder)
-    print(train1.shape)
-    #np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\train",train)
-    #np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\labels",labels)
-    samp=random.sample(range(len(labels1)),400)
-    train=train1[samp[:300]]
-    test=train1[samp[300:]]
-    train_labels=np.array(labels1)[samp[:300]]
-    test_labels=np.array(labels1)[samp[300:]]
-    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\train",train)
-    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\train_labels",train_labels)
-    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\test_labels",test_labels)
-    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\test",test)
+    X_train, X_test, y_train, y_test = train_test_split(train1,labels1 ,test_size=0.10,random_state=42)
+    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\train",X_train)
+    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\train_labels",y_train)
+    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\test_labels",y_test)
+    np.save("C:\\Users\\Teja\\Dropbox\\Gatech\\SEM 2\\Computational sustainability\\code\\test",X_test)
